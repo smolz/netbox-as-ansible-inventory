@@ -92,12 +92,12 @@ class Requirements(Command):
         pass
 
     def run(self):
-        import pip
+        from pip._internal import main as pip
 
         # Install requirements via pip.
-        pip.main(['install', '.'])
+        pip(['install', '.'])
         if self.tests_requirement:
-            pip.main(['install', '.[tests]'])
+            pip(['install', '.[tests]'])
 
 setup(
     name='ansible-netbox-inventory',
